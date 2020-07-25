@@ -8,9 +8,13 @@
             </div>
         {% endif %}
         {% if user.is_authenticated %}
-        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-default btn-edit" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         {% endif %}
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.text|linebreaksbr }}</p>
+        <h2 class="post-title">{{ post.title }}</h2>
+        <figure>
+            <img class="post-image center" src="{{ post.image.url }}"/>
+            <figcaption class="caption">Image Credits: {{ post.caption }}</figcaption>
+        </figure>
+        <p class="post-text">{{ post.text|linebreaksbr }}</p>
     </div>
 {% endblock %}
